@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'keyalias'
+            keyPassword 'sbagliati123'
+            storeFile file('C:/Users/Andrea/AndroidStudioProjects/RamCleaner/keystore.jks')
+            storePassword 'ApdIW8'
+        }
+    }
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
     defaultConfig {
@@ -9,6 +17,7 @@ android {
         targetSdkVersion 20
         versionCode 102
         versionName '1.02'
+        signingConfig signingConfigs.config
     }
     buildTypes {
         debug {
@@ -18,6 +27,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
+            signingConfig signingConfigs.config
         }
     }
     productFlavors {
