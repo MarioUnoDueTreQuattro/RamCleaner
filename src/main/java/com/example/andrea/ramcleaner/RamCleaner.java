@@ -16,23 +16,20 @@ public class RamCleaner extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_kill_and_clean);
-        ActivityManager activityManager = (ActivityManager) this.getSystemService(Context
-                .ACTIVITY_SERVICE);
+        ActivityManager activityManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
         for (int i = 0; i < procInfos.size(); i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
-                //Toast.makeText(null, "music is running",
-                  //      Toast.LENGTH_LONG).show();
+            //Toast.makeText(null, "music is running",
+            //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
-            }
+        }
         String result1 = "";
         try {
             result1 = com.example.andrea.ramcleaner.Shell.sudo("sync");
             result1 = com.example.andrea.ramcleaner.Shell.sudo("echo 3 > /proc/sys/vm/drop_caches");
         } catch (com.example.andrea.ramcleaner.Shell.ShellException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        } finally {
         }
 /*        Toast mioToast = Toast.makeText(RamCleaner.this,
                 "RAM and Drop Cache cleaned.",
@@ -47,11 +44,7 @@ public class RamCleaner extends Activity {
         }
  */
         System.exit(0);
-
-        }
-
-
-
+    }
 
 
     @Override
