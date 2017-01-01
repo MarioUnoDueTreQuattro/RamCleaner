@@ -19,6 +19,8 @@
 
         <activity
             android:name=".RamCleaner"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_kill_and_clean" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
